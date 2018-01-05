@@ -13,7 +13,7 @@ public class Incrypt {
 
 	public static void main(String[] args) {
 		try {
-			FileWriter fw = new FileWriter("src/intro_to_file_io/incrpt.txt");
+			FileWriter fw = new FileWriter("src/intro_to_file_io/incrptic.txt");
 			String semic = JOptionPane.showInputDialog("Enter Text");
 
 			/*
@@ -22,12 +22,14 @@ public class Incrypt {
 			 * FileWriter("src/intro_to_file_io/test2.txt", true);)
 			 */
 
-			fw.write("\n " + Base64.getEncoder().encodeToString(semic.getBytes()));
+			fw.write("" + Base64.getEncoder().encodeToString(semic.getBytes()));
 			System.out.println(Base64.getEncoder().encodeToString(semic.getBytes()));
 			fw.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.exit(0);
 	}
 
 }

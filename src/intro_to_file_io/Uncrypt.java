@@ -18,12 +18,21 @@ public class Uncrypt {
 				FileReader formationassemble = new FileReader(fileName);
 				BufferedReader reader = new BufferedReader(formationassemble);
 				System.out.println(fileName);
-				String uncrypted = Base64.getDecoder().toString();
+
+				String line = reader.readLine();
+				System.out.println(line);
+				String uncrypted = new String(Base64.getDecoder().decode(line.getBytes()));
+
+				while (line != null) {
+					System.out.println(line);
+					line = reader.readLine();
+				}
+
 				JOptionPane.showMessageDialog(null, uncrypted);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		}
 	}
-
 }
