@@ -1,36 +1,58 @@
 package intro_to_file_io;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Base64;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class Copywrote {
 	int bing = 0;
+	String y;
 
 	public static void main(String[] args) {
-FileReader bong = new FileReader(file)
-		for (int i = 0; i < args.length; i++) {
+		Copywrote a = new Copywrote();
+		a.gui();
 
-			try {
-				FileWriter fw = new FileWriter("src/intro_to_file_io/incrptic.txt");
-				String semic = JOptionPane.showInputDialog("Enter Text");
+	}
 
-				/*
-				 * NOTE: To append to a file that already exists, add true as a second parameter
-				 * when calling the FileWriter constructor. (e.g. FileWriter fw = new
-				 * FileWriter("src/intro_to_file_io/test2.txt", true);)
-				 */
+	private void gui() {
+		JFileChooser jfc = new JFileChooser();
 
-				fw.write("" + Base64.getEncoder().encodeToString(semic.getBytes()));
-				System.out.println(Base64.getEncoder().encodeToString(semic.getBytes()));
-				fw.close();
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		int returnVal = jfc.showOpenDialog(null);
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			if (jfc.getSelectedFile().listFiles() != null) {
 
-			} catch (IOException e) {
-				e.printStackTrace();
+				for (File file : jfc.getSelectedFile().listFiles()) {
+					if (!file.isDirectory()) {
+
+						try {
+							FileWriter fw = new FileWriter(file, true);
+
+							String appendologist = "@me 2017";
+							String o = "// " + appendologist + "\n";
+							/*
+							 * NOTE: To append to a file that already exists, add true as a second parameter
+							 * when calling the FileWriter constructor. (e.g. FileWriter fw = new
+							 * FileWriter("src/intro_to_file_io/test2.txt", true);)
+							 */
+
+							fw.write(o);
+							System.out.println(Base64.getEncoder().encodeToString(appendologist.getBytes()));
+							fw.close();
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+
 			}
 		}
 	}
 }
+// @me 2017
