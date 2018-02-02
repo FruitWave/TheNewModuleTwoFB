@@ -3,5 +3,6 @@
 	<classpathentry excluding="hangman project/|hangman project/|src/intro_to_file_io/" kind="src" path=""/>
 	<classpathentry kind="src" path="hangman project"/>
 	<classpathentry kind="src" path="src/intro_to_file_io"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
