@@ -3,6 +3,9 @@ package intro_to_file_io;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +26,7 @@ public class Four_Buttons implements ActionListener {
 	JButton fiveb;
 	ArrayList<String> busyb;
 	Rectangle dimensionalBox;
-	int saveNum = 0;
+	int saveNum = 20;
 
 	public static void main(String[] args) {
 		Four_Buttons argoniti = new Four_Buttons();
@@ -71,8 +74,8 @@ public class Four_Buttons implements ActionListener {
 		try {
 			saveNum++;
 			String saveNumber = "" + saveNum;
-			FileWriter pointlessServant = new FileWriter("src/newtestsaver" + saveNumber + ".txt");
-			
+			FileWriter pointlessServant = new FileWriter("src/newtestsaverWK2" + saveNumber + ".txt");
+
 			pointlessServant.write(advanced_savetry);
 			pointlessServant.close();
 		} catch (IOException e) {
@@ -85,7 +88,7 @@ public class Four_Buttons implements ActionListener {
 		if (e.getSource() == oneb) {
 			addtask();
 		} else if (e.getSource() == threeb) {
-			String jop = JOptionPane.showInputDialog("Input the number of task to remove (task conception number).");
+			String jop = JOptionPane.showInputDialog("Input the number of task to save (task conception number).");
 			int index = Integer.parseInt(jop);
 			String finalstring = busyb.get(index);
 			System.out.println(finalstring);
@@ -101,6 +104,30 @@ public class Four_Buttons implements ActionListener {
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
+			}
+
+		} else if (e.getSource() == fourb) {
+			boolean endwith = true;
+			String sickmemes = JOptionPane
+					.showInputDialog("Which task do you wish to load? Give a name without an extension.");
+			if (sickmemes.endsWith(".txt")) {
+				endwith = false;
+			} else {
+				sickmemes.concat(".txt");
+			}
+			FileReader saus;
+			try {
+				saus = new FileReader("src/" + sickmemes);
+				BufferedReader saus0 = new BufferedReader(saus);
+				String line = saus0.readLine();
+				while (line != null) {
+					busyb.add(line);
+					line = saus0.readLine();
+				}
+				saus0.close();
+
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 
 		} else if (e.getSource() == fiveb) {
